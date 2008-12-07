@@ -17,7 +17,7 @@ See http://github.com/jnunemaker/httparty/tree/master/examples
 
 == REQUIREMENTS:
 
-* Active Support >= 2.1
+* Json ~> 1.1
 
 == INSTALL:
 
