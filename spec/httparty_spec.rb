@@ -41,13 +41,16 @@ describe HTTParty do
     end
     
     it "should add https if not present for ssl requests" do
-      uri = HTTParty.normalize_base_uri('api.foo.com/v1:443')
-      uri.should == 'https://api.foo.com/v1:443'
+      uri = HTTParty.normalize_base_uri('api.foo.com:443/v1')
+      uri.should == 'https://api.foo.com:443/v1'
+      p uri.methods.sort
+      uri.use_ssl.should be_true
     end
     
     it "should not remove https for ssl requests" do
-      uri = HTTParty.normalize_base_uri('https://api.foo.com/v1:443')
-      uri.should == 'https://api.foo.com/v1:443'
+      uri = HTTParty.normalize_base_uri('https://api.foo.com:443/v1')
+      uri.should == 'https://api.foo.com:443/v1'
+      uri.port.should == 443
     end
   end
   
